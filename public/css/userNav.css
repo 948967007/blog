@@ -1,0 +1,32 @@
+#userNav{
+   width:1300px;
+   margin:auto;
+   background:rgba(0, 0, 0, .7);
+}
+.user{
+   float:right;
+   line-height:60px;
+}
+.user a{
+   color:red;
+}
+.pInfo{
+   width:500px;
+   margin:auto;
+}
+.pInfo .layui-sub{
+   margin-left:204px;
+}
+.pInfo .layui-table th{
+   font-weight: bold;
+   text-align:center;
+}
+.pInfo tr{
+   text-align: center;
+}
+.info-conter .layui-input-block{
+   margin-left:0;
+}
+.info-conter .layui-form-item{
+   margin-bottom:0;
+}

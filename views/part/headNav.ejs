@@ -1,0 +1,128 @@
+ <!-- 头部导航栏 -->
+<div id="head">
+   <div class="topNav">
+      <div class="navBer">
+         <div class="name">李某人个人博客</div>
+         <div class="nav">
+            <div class="nav1">
+               <a href="">博客首页</a>
+               <a href="">文章</a>
+               <a href="">关于我</a>
+               <a href="">联系</a>
+            </div>
+         </div>
+         <div class="reg-sign">
+            个人中心
+         </div>
+      </div>
+   </div>
+      <!-- 登录/注册框 -->
+   <div class="regSign" style="display:none">
+      <div class="regSign1">
+         <div class="layui-tab layui-bg-gray layui-tab-brief" lay-filter="docDemoTabBrief">
+            <ul class="layui-tab-title">
+               <li class="layui-this">登录</li>
+               <li>注册</li>
+            </ul>
+            <div class="layui-tab-content">
+               <div class="layui-tab-item layui-show">
+                  <form class="layui-form" action="">
+                     <div class="layui-form-item layui-form-aN">
+                        <label class="layui-form-label">请输入账号</label>
+                        <div class="layui-input-inline">
+                        <input type="text" name="username" lay-verify="username" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">请填写6-12位字符</div>
+                     </div>
+                     <div class="layui-form-item layui-form-aN">
+                        <label class="layui-form-label">请输入密码</label>
+                        <div class="layui-input-inline">
+                        <input type="password" name="password" lay-verify="password" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">请填写6-18位字符</div>
+                     </div>
+                     <div class="layui-form-item">
+                        <div class="layui-form-btn">
+                           
+                           <button  class="layui-btn" lay-submit lay-filter="signin">立即登录</button>
+                           <button  type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+               <div class="layui-tab-item">
+                  <form class="layui-form" action="">
+                     <div class="layui-form-item layui-form-aN">
+                        <label class="layui-form-label">请输入账号</label>
+                        <div class="layui-input-inline">
+                        <input type="text" name="username" lay-verify="username" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">请填写6-12位字符</div>
+                     </div>
+                     <div class="layui-form-item layui-form-aN">
+                        <label class="layui-form-label">请输入密码</label>
+                        <div class="layui-input-inline">
+                        <input type="password" id="reg-password" name="password" lay-verify="password" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">请填写6-18位字符</div>
+                     </div>
+                     <div class="layui-form-item layui-form-aN">
+                        <label class="layui-form-label">请确认密码</label>
+                        <div class="layui-input-inline">
+                        <input type="password" name="password2" lay-verify="password2" placeholder="请确认密码" autocomplete="off" class="layui-input">
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">再次输入密码</div>
+                     </div>
+                        <div class="layui-form-item">
+                        <div class="layui-form-btn">
+                           <button  class="layui-btn" lay-submit lay-filter="reg">立即注册</button>
+                           <button  type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                        </div>
+                  </form>
+               </div>
+            </div>
+         </div>  
+         <div class="close">X</div>   
+      </div>
+   </div>
+   <!-- 左边导航栏 -->
+   <div class="leftNav">
+      <div class="nav2">
+         <div class="hpImg">
+            <a href="">
+               <img src="./images/hp.png" alt="">
+            </a>
+         </div>
+         <div class="meTxt">
+            <p>李某人，一个95后的小白前端程序猿，18年开始入坑，至今虚心学习前端技术知识，希望能在各位大佬身上学习到更多的技术与知识。</p>
+         </div>
+      </div>
+   </div>
+</div>
+<script>
+   $reg_Sign = $("#head .reg-sign")
+   $regSign = $(".regSign")
+   $close = $(".regSign .close")
+   $reg_Sign.on("click",function(){
+      $.ajax({
+         method : "POST",
+         url : "/usercenter",
+         dataType : "json",
+         success : function(data){
+            if (data.login) {
+               location.href = "/usercenter"
+            }else{
+               $regSign.fadeIn(100)
+            }
+         }
+      })
+
+      // $regSign.fadeIn(100)
+   })
+   $close.on("click",function(){
+      $regSign.fadeOut(100)
+   })
+</script>
+<!-- 引入layui的模块代码 -->
+<script src="/js/layui.js"></script>
